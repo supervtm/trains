@@ -30,16 +30,16 @@ public class User {
 	private String password;
 	
 	//头像路径
-	private String head;
+	private String head = "default.jpg";
 	
 	//是否被使用
-	private Integer isUse;
+	private Integer isUse = 1;
 	
 	//状态 0为审核中,1为审核通过,2为审核不通过
-	private Integer status;
+	private Integer status = 0;
 	
 	//权限 0为管理员，1为普通用户
-	private Integer power;
+	private Integer power = 1;
 
 	public Integer getUserId() {
 		return userId;
