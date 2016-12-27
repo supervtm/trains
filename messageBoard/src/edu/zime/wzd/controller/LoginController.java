@@ -24,6 +24,7 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String toLogin(){
 		
+//		return "user/login";
 		return "user/login";
 	}
 	

@@ -3,55 +3,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8">
 <title></title>
-</head>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 
-<style type="text/css">
-.form-group {
-	background-color: #E2E2E2;
-	box-shadow: 3px 3px 8px #ADADAD;
-	margin-top: 140px;
-	margin-left: 550px;
-	font-family: "";
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+<style>
+body {
+	/*background: url(img/stock-photo-189877643.jpg);*/
+	background: #1B6D85;
 }
 
-div img {
-	width: 100px;
-	height: 100px;
-	border-radius: 100px;
+.body {
+	margin: 0 auto;
+	/*text-align: center;*/
+	width: 300px;
+	height: 300px;
+	border: 1px solid gainsboro;
+	margin-top: 200px;
+	-moz-box-shadow: 2px 2px 5px #333333;
+	-webkit-box-shadow: 2px 2px 5px #333333;
+	box-shadow: 2px 2px 5px #333333;
+}
+
+.body form {
+	margin: 10px;
+	margin-top: 40px;
+}
+
+.body div {
+	margin: 15px;
+}
+
+img {
+	margin-left: 20px;
+}
+
+.form-control-xxx {
+	width: 120px;
+	display: inline;
+}
+
+#submit {
+	margin-left: 35px;
+	margin-right: 90px;
 }
 </style>
+<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
 
 <body>
-	<!--<div class="col-xs-6 col-sm-5"></div>-->
-
-	<div class="form-group" style="width: 250px;">
-		<div class="to">
-			<center>
-				<img src="${pageContext.request.contextPath}/images/img4.bmp" />
-			</center>
-		</div>
-		<form action="${pageContext.request.contextPath}/user/login" method="post">
-			<label for="exampleInputEmail1">账户：</label>
-			<input class="form-control" placeholder="username" name="username">
-			<label for="exampleInputPassword1">密码：</label> 
-			<input type="password" class="form-control"  placeholder="Password" name="password"> 
-			<label for="exampleInputFile">
-				验证码：<img src="${pageContext.request.contextPath}/images/QQ.jpg"
-				alt="Responsive image" class="img-rounded" style="width: 70px; height: 30px;">
-			</label> 
-			<br />
-			<button type="submit" class="btn btn-info" style="width: 160px;">登录</button>
-			<button type="button" class="btn btn-primary" style="width: 70px;">注册</button>
+	<div class="body">
+		<form role="form" class="bs-example bs-example-form">
+			<div>
+				<input class="form-control" placeholder="用户名" />
+			</div>
+			<div>
+				<input type="password" name="" class="form-control" placeholder="密   码" />
+			</div>
+			<div class="from-group">
+				<input type="password"
+					class="form-control input-sm form-control-xxx" placeholder="验证码" />
+				<img src="img/12822929018610.jpg" width="90px" height="35px" />
+			</div>
+			<div class="checkbox">
+				<label><input type="checkbox" />自动登录</label>
+			</div>
+			<button id="submit" type="submit" class="btn btn-success">登录</button>
+			<button class="btn btn-info">注册</button>
 		</form>
 	</div>
-	</div>
-
 </body>
 
 </html>

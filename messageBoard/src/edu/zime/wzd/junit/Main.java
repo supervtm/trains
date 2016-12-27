@@ -19,7 +19,7 @@ public class Main {
 	
 
 	@Test
-	public void insert() {
+	public void testInsert() {
 		
 		User user = new User("123", "123");
 		try {
@@ -28,5 +28,4 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-
 }
