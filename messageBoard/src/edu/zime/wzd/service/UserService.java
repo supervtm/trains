@@ -6,7 +6,7 @@ import edu.zime.wzd.domain.Page;
 import edu.zime.wzd.domain.User;
 
 /**
- * 用于用户登录、注册以及修改信息
+ * 用于用户登录、注册、审核用户、修改信息
  * @author wchvt
  *
  */
@@ -43,12 +43,12 @@ public interface UserService {
 	public void updateUser(String userId, User user) throws Exception;
 	
 	/**
-	 * 修改用户审核状态
+	 * 审核用户(修改用户status)
 	 * @param userId
-	 * @param user
+	 * @param status 状态 ，1为审核通过,2为审核不通过
 	 * @throws Exception
 	 */
-	public void updateStatus(String userId) throws Exception;
+	public void checkUser(String userId, String status) throws Exception;
 	
 	/**
 	 * 删除用户

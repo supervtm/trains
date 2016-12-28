@@ -1,11 +1,12 @@
 package edu.zime.wzd.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import edu.zime.wzd.domain.User;
+import edu.zime.wzd.service.UserService;
 
 /**
  * 管理员审核、删除用户
@@ -15,6 +16,9 @@ import edu.zime.wzd.domain.User;
 @Controller
 @RequestMapping("/admin")
 public class ManagerController {
+	
+	@Autowired
+	private UserService userService;
 
 	/**
 	 * 导向到审核页面
@@ -40,14 +44,14 @@ public class ManagerController {
 	}
 	
 	/**
-	 * 修改用户状态<br>
+	 * 修改用户审核状态<br>
 	 * 成功、失败，返回json信息
 	 * @param userId
 	 * @param user
 	 */
 	@RequestMapping(value="/verify", method=RequestMethod.POST)
 	@ResponseBody
-	public String verify(String userId, User user){
+	public String verify(String userId){
 		
 		return "";
 	}

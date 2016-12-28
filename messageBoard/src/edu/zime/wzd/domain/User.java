@@ -2,43 +2,48 @@ package edu.zime.wzd.domain;
 
 /**
  * 用户
+ * 
  * @author wchvt
  *
  */
 public class User {
 
-	//用户Id
+	// 用户Id
 	private Integer userId;
-	
-	//用户名
+
+	// 用户名
 	private String userName;
-	
+
+	// 昵称
+	private String nickName;
+
 	public User(String userName, String password) {
 		super();
 		this.userName = userName;
 		this.password = password;
+		this.nickName = userName;
 	}
 
 	public User() {
 		super();
 	}
 
-	//昵称
-	private String nickName;
-	
-	//密码
+	// 密码
 	private String password;
-	
-	//头像路径
+
+	// 用户名
+	private String createTime;
+
+	// 头像路径
 	private String head = "default.jpg";
-	
-	//是否被使用
+
+	// 是否被使用
 	private Integer isUse = 1;
-	
-	//状态 0为审核中,1为审核通过,2为审核不通过
+
+	// 状态 0为审核中,1为审核通过,2为审核不通过
 	private Integer status = 0;
-	
-	//权限 0为管理员，1为普通用户
+
+	// 权限 0为管理员，1为普通用户
 	private Integer power = 1;
 
 	public Integer getUserId() {
@@ -109,5 +114,13 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", nickName=" + nickName + ", password=" + password
 				+ ", head=" + head + ", isUse=" + isUse + ", status=" + status + ", power=" + power + "]";
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
 }

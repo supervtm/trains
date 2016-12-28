@@ -11,7 +11,7 @@ import edu.zime.wzd.domain.Page;
 import edu.zime.wzd.domain.User;
 
 /**
- * 查询、增加、修改用户
+ * 查询、增加、修改、审核、删除用户
  * 
  * @author wchvt
  *
@@ -27,13 +27,17 @@ public interface UserMapper {
 	@Select("select * from t_user where userId=#{userId}")
 	public User queryById(@Param("userId") String userId) throws Exception;
 
-	@Select("select * from t_user limit #{startPage}, #{pageSize}")
+	@Select("select * from t_user ORDER BY status limit #{startPage}, #{pageSize}")
 	public List<User> queryAll(Page page) throws Exception;
+	
+	//查询用户总数
+	@Select("select count(*) from t_user")
+	public Integer queryTotal() throws Exception;
 
-	@Insert("insert into t_user(userName, nickName, password, head, isUse, status, power) values(#{userName}, #{nickName}, #{password}, #{head}, #{isUse}, #{status} ,#{power})")
+	@Insert("insert into t_user(userName, password) values(#{userName}, #{password})")
 	public void insert(User user) throws Exception;
 
-	@Update("update t_user set nickname=#{nickName}, password=#{password}, head=#{head} where userId=#{userId}")
+	@Update("update t_user set nickname=#{nickName}, head=#{head} where userId=#{userId}")
 	public void update(User user) throws Exception;
 
 	@Update("update t_user set status=#{status} where userId=#{userId}")

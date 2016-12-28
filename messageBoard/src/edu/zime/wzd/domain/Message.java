@@ -17,11 +17,8 @@ public class Message {
 	// 发布时间
 	private String time;
 
-	// 深度
+	// 用户
 	private Integer user;
-	
-	// 深度
-	private Integer depth;
 
 	public Integer getMessageId() {
 		return messageId;
@@ -47,14 +44,6 @@ public class Message {
 		this.time = time;
 	}
 
-	public Integer getDepth() {
-		return depth;
-	}
-
-	public void setDepth(Integer depth) {
-		this.depth = depth;
-	}
-
 	public Integer getUser() {
 		return user;
 	}
@@ -66,6 +55,6 @@ public class Message {
 	@Override
 	public String toString() {
 		return "Message [messageId=" + messageId + ", content=" + content + ", time=" + time + ", user=" + user
-				+ ", depth=" + depth + "]";
+				+ "]";
 	}
 }

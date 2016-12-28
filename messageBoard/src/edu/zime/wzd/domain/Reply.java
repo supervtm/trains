@@ -23,12 +23,6 @@ public class Reply {
 	// 根帖
 	private Integer rootId;
 	
-	// 父帖
-	private Integer fatherId;
-	
-	// 深度
-	private Integer depth;
-
 	public Integer getReplyId() {
 		return replyId;
 	}
@@ -69,25 +63,9 @@ public class Reply {
 		this.rootId = rootId;
 	}
 
-	public Integer getFatherId() {
-		return fatherId;
-	}
-
-	public void setFatherId(Integer fatherId) {
-		this.fatherId = fatherId;
-	}
-
-	public Integer getDepth() {
-		return depth;
-	}
-
-	public void setDepth(Integer depth) {
-		this.depth = depth;
-	}
-
 	@Override
 	public String toString() {
 		return "Reply [replyId=" + replyId + ", content=" + content + ", time=" + time + ", user=" + user + ", rootId="
-				+ rootId + ", fatherId=" + fatherId + ", depth=" + depth + "]";
+				+ rootId + "]";
 	}
 }

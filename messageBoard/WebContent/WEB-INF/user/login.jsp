@@ -7,6 +7,7 @@
 <title></title>
 
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+
 <style>
 body {
 	/*background: url(img/stock-photo-189877643.jpg);*/
@@ -54,16 +55,15 @@ img {
 
 <body>
 	<div class="body">
-		<form role="form" class="bs-example bs-example-form">
+		<form action="${pageContext.request.contextPath}/user/login" role="form" class="bs-example bs-example-form" method="post">
 			<div>
-				<input class="form-control" placeholder="用户名" />
+				<input class="form-control" name="userName" placeholder="用户名" />
 			</div>
 			<div>
-				<input type="password" name="" class="form-control" placeholder="密   码" />
+				<input type="password" name="password" class="form-control" placeholder="密   码" />
 			</div>
 			<div class="from-group">
-				<input type="password"
-					class="form-control input-sm form-control-xxx" placeholder="验证码" />
+				<input class="form-control input-sm form-control-xxx" placeholder="验证码" />
 				<img src="img/12822929018610.jpg" width="90px" height="35px" />
 			</div>
 			<div class="checkbox">
