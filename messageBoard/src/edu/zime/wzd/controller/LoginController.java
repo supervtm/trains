@@ -4,7 +4,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -35,6 +34,18 @@ public class LoginController {
 		// return "user/login";
 		return "user/login";
 	}
+	
+	/**
+	 * 导向到主页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/main")
+	public String toMain() {
+
+		// return "user/login";
+		return "base";
+	}
 
 	/**
 	 * 验证登录是否合法<br>
@@ -44,10 +55,12 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(User user, HttpSession session, Model model) {
+	public String login(User user, HttpSession session) {
 
-		
-		return "base";
+		user.setNickName("123");
+		user.setPower(0);
+		session.setAttribute("user", user);
+		return "redirect:/user/main";
 	}
 
 	/**
