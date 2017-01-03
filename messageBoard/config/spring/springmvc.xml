@@ -45,7 +45,7 @@
 	<!--拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/base/*"/>
+			<mvc:mapping path="/page/*"/>
 			<bean class="edu.zime.wzd.interceptors.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

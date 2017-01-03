@@ -53,7 +53,7 @@ public class Main {
 		
 		System.out.println(jsonObject.toString());
 		
-		System.out.println("留言总数："+messageMapper.getTotlByUser("2"));
+		System.out.println("留言总数："+messageMapper.getTotlByUser(2));
 		
 		System.out.println(list.size());
 	}

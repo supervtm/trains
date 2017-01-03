@@ -56,5 +56,12 @@ public interface UserService {
 	 * @throws Exception
 	 */
 	public void delUser(String userId) throws Exception;
+
+	/**
+	 * 获取用户总数
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer getTotal() throws Exception;
 	
 }

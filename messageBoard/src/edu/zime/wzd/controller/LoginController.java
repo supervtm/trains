@@ -1,9 +1,12 @@
 package edu.zime.wzd.controller;
 
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,21 +34,10 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String toLogin() {
 
-		// return "user/login";
+		// 显示login页面
 		return "user/login";
 	}
 	
-	/**
-	 * 导向到主页面
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/main")
-	public String toMain() {
-
-		// return "user/login";
-		return "base";
-	}
 
 	/**
 	 * 验证登录是否合法<br>
@@ -53,14 +45,28 @@ public class LoginController {
 	 * 用户信息持久化
 	 * 
 	 * @return
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(User user, HttpSession session) {
-
-		user.setNickName("123");
-		user.setPower(0);
-		session.setAttribute("user", user);
-		return "redirect:/user/main";
+	public String login(User user, HttpSession session, Model model) throws Exception {
+	
+		User login=	userService.queryUser(user);
+		
+		//登陆成功跳转主页面，不成功跳回登录页面
+		if(login!=null){
+			login.setCreateTime(new SimpleDateFormat("yy-MM-dd HH:mm").format(new SimpleDateFormat("yy-MM-dd HH:mm").parse(login.getCreateTime())));
+			session.setAttribute("user", login);
+			return "redirect:/page/main";
+		}else{
+			model.addAttribute("erro", "用户名或密码错误");
+			return "forward:/page/tologin";
+		}
+		/*user.setUserName("admin");
+		user.setPassword("123");
+		User login=	userService.queryUser(user);
+		login.setCreateTime(new SimpleDateFormat("yy-MM-dd HH:mm").format(new SimpleDateFormat("yy-MM-dd HH:mm").parse(login.getCreateTime())));
+		session.setAttribute("user", login);
+		return "redirect:/page/main";*/
 	}
 
 	/**
@@ -72,6 +78,7 @@ public class LoginController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 
-		return null;
+		session.removeAttribute("user");
+		return "redirect:/user/login";
 	}
 }

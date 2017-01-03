@@ -37,9 +37,6 @@ public class User {
 	// 头像路径
 	private String head = "default.jpg";
 
-	// 是否被使用
-	private Integer isUse = 1;
-
 	// 状态 0为审核中,1为审核通过,2为审核不通过
 	private Integer status = 0;
 
@@ -86,14 +83,6 @@ public class User {
 		this.head = head;
 	}
 
-	public Integer getIsUse() {
-		return isUse;
-	}
-
-	public void setIsUse(Integer isUse) {
-		this.isUse = isUse;
-	}
-
 	public Integer getStatus() {
 		return status;
 	}
@@ -113,7 +102,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", nickName=" + nickName + ", password=" + password
-				+ ", head=" + head + ", isUse=" + isUse + ", status=" + status + ", power=" + power + "]";
+				+ ", head=" + head + ", status=" + status + ", power=" + power + "]";
 	}
 
 	public String getCreateTime() {

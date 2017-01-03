@@ -13,7 +13,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 
-		/*//如果是登录页面则放行
+		//如果是登录页面则放行
 		if(request.getRequestURI().indexOf("login")>=0){
 			return true;
 		}
@@ -23,10 +23,9 @@ public class LoginInterceptor implements HandlerInterceptor{
 			return true;
 		}
 		//用户没有登录挑战到登录页面
-		request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/user/login.jsp").forward(request, response);
 		
-		return false;*/
-		return true;
+		return false;
 	}
 
 	@Override

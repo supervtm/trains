@@ -29,13 +29,13 @@ public interface MessageMapper {
 	// 查询所有留言
 	@Select("SELECT t_message.messageId, t_message.content, t_message.time, "
 			+ "t_user.userid, t_user.nickname, t_user.head FROM t_message INNER JOIN "
-			+ "t_user ON t_message.`user` = t_user.userid ORDER BY time limit #{startPage}, #{pageSize}")
+			+ "t_user ON t_message.`user` = t_user.userid ORDER BY time desc limit #{startPage}, #{pageSize}")
 	public List<CustomMessage> queryAll(Page page) throws Exception;
 	
 	// 查询用户的所有留言
 	@Select("SELECT t_message.messageId, t_message.content, t_message.`user`, "
 			+ "t_message.time FROM t_message WHERE `user`=#{userId} ORDER BY time DESC")
-	public List<CustomMessage> queryByUser(@Param("userId") String userId) throws Exception;
+	public List<CustomMessage> queryByUser(@Param("userId") Integer userId) throws Exception;
 
 	// 查询留言总数
 	@Select("select COUNT(*) from t_message")
@@ -43,7 +43,7 @@ public interface MessageMapper {
 
 	// 查询用户留言总数
 	@Select("select COUNT(*) from t_message where user=#{userId}")
-	public Integer getTotlByUser(@Param("userId") String userId) throws Exception;
+	public Integer getTotlByUser(@Param("userId") Integer userId) throws Exception;
 
 	@Insert("insert into t_message values(null, #{content}, #{user}, null)")
 	public void insertMessage(Message message) throws Exception;

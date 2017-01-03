@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.zime.wzd.domain.User;
@@ -36,8 +35,8 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String toLogin() {
-
-		return "";
+	
+		return "user/register";
 	}
 
 	/**
@@ -46,11 +45,16 @@ public class UserController {
 	 * 用户信息持久化
 	 * 
 	 * @return
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String login(User user, HttpSession session) {
-
-		return null;
+	public String login(User user, HttpSession session) throws Exception {
+		
+		user.setNickName(user.getUserName());
+		
+		userService.insertUser(user);
+		
+		return "redirect:/page/main";
 	}
 
 	/**
@@ -63,28 +67,38 @@ public class UserController {
 	 * @throws IllegalStateException 
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	@ResponseBody
-	public String update(String userId, User user, MultipartFile imageFile, HttpServletRequest request) throws IllegalStateException, Exception {
+	public String update(User user, String head, MultipartFile imageFile, HttpServletRequest request, HttpSession session) throws IllegalStateException, Exception {
 
-		// 原始文件名称
-		String pictureFile_name = imageFile.getOriginalFilename();
-		// 新文件名称
-		String newFileName = UUID.randomUUID().toString()
-				+ pictureFile_name.substring(pictureFile_name.lastIndexOf("."));
+		if (imageFile.getSize() != 0) {
+			// 原始文件名称
+			String pictureFile_name = imageFile.getOriginalFilename();
+			// 新文件名称
+			String newFileName = UUID.randomUUID().toString()
+					+ pictureFile_name.substring(pictureFile_name.lastIndexOf("."));
 
-		// 上传图片
-		String savePath = request.getServletContext().getRealPath("/images");
-		File uploadPic = new File(savePath + "/" + newFileName);
+			// 上传图片
+			String savePath = request.getServletContext().getRealPath("/images");
+			File uploadPic = new File(savePath + "/" + newFileName);
 
-		if (!uploadPic.exists()) {
-			uploadPic.mkdirs();
+			if (!uploadPic.exists()) {
+				uploadPic.mkdirs();
+			}
+			// 向磁盘写文件
+			imageFile.transferTo(uploadPic);
+			
+			//设置头像名称
+			user.setHead(newFileName);
+		} else {
+			//设置原来的头像名称
+			user.setHead(head);
 		}
-		// 向磁盘写文件
-		imageFile.transferTo(uploadPic);
 		
-		//设置头像名称
-		user.setHead(newFileName);
+		// 从session中取出用户userId
+		User user2 = (User) session.getAttribute("user");
+		Integer userId = user2.getUserId();
 		
-		return null;
+		userService.updateUser(userId.toString(), user);
+		
+		return "redirect:/page/me";
 	}
 }

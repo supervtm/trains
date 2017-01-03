@@ -26,14 +26,14 @@ public interface MessageService {
 	 * @param user
 	 * @return
 	 */
-	public List<CustomMessage> queryMessagesByUser(String userId) throws Exception;
+	public List<CustomMessage> queryMessagesByUser(Integer userId) throws Exception;
 	
 	/**
 	 * 发布留言
 	 * @param customMessageVo
 	 * @throws Exception
 	 */
-	public void saveMessage(String userId, Message message) throws Exception;
+	public void saveMessage(Integer userId, Message message) throws Exception;
 	
 	/**
 	 * 修改留言
@@ -48,4 +48,18 @@ public interface MessageService {
 	 * @throws Exception
 	 */
 	public void delMessage(String messageId) throws Exception;
+
+	/**
+	 * 获取所有留言总数
+	 * @return
+	 * @throws Exception 
+	 */
+	public int getTotal() throws Exception;
+	
+	/**
+	 * 获取用户留言总数
+	 * @return
+	 * @throws Exception 
+	 */
+	public int getUserTotal(Integer userId) throws Exception;
 }
