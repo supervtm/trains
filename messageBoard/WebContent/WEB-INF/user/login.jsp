@@ -121,7 +121,7 @@ button[type="button"] {
 	
 	function check(form) {
 
-       /*  if(form.userName.value=='') {
+       if(form.userName.value=='') {
               alert("请输入用户帐号!");
               form.userName.focus();
               return false;
@@ -132,8 +132,8 @@ button[type="button"] {
               return false;
 	     }
 		
-	     isRightCode(form); */
-	     formsubmit();
+	     isRightCode(form);
+	    /*  formsubmit(); */
 	}
 	
 	function formsubmit() {

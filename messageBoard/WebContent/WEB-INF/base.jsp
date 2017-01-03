@@ -120,7 +120,7 @@ hr {
 					</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">欢迎${user.nickName}</a></li>
+					<li><a href="${pageContext.request.contextPath}/page/me">欢迎你，${user.nickName}</a></li>
 				</ul>
 			</div>
 		</div>

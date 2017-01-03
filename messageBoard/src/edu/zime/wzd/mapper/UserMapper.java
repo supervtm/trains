@@ -28,14 +28,14 @@ public interface UserMapper {
 	@Select("select * from t_user where userId=#{userId}")
 	public User queryById(@Param("userId") String userId) throws Exception;
 
-	@Select("select * from t_user ORDER BY status limit #{startPage}, #{pageSize}")
+	@Select("select * from t_user where userId>1 ORDER BY status limit #{startPage}, #{pageSize}")
 	public List<User> queryAll(Page page) throws Exception;
 	
 	//查询用户总数
 	@Select("select count(*) from t_user")
 	public Integer queryTotal() throws Exception;
 
-	@Insert("insert into t_user(userName, password) values(#{userName}, #{password})")
+	@Insert("insert into t_user(userName,nickName password) values(#{userName}, #{nickName} #{password})")
 	public void insert(User user) throws Exception;
 
 	@Update("update t_user set nickname=#{nickName}, head=#{head} where userId=#{userId}")

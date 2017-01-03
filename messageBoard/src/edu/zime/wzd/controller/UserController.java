@@ -49,7 +49,6 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String login(User user, HttpSession session) throws Exception {
-		
 		user.setNickName(user.getUserName());
 		
 		userService.insertUser(user);
