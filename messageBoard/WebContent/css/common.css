@@ -1,0 +1,128 @@
+/* body {
+	margin-top: 70px;
+} */
+
+.page-main {
+	margin-top: -10px;
+	margin-bottom: -10px;
+}
+
+.reply_img {
+	width: 35px;
+	height: 35px;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-top: 5px;
+	float: left;
+}
+
+.message-list {
+	margin-bottom: -20px;
+}
+
+.reply_content {
+	font-size: 12px;
+	font-family: "方正宋刻本秀楷简体";
+}
+
+.time {
+	font-size: 5px;
+	color: #0082CB;
+	margin-left: 2px;
+	/*float: right;*/
+}
+
+.message-div {
+	/*margin-bottom: -10px;*/
+	
+}
+
+.reply-all {
+	margin-top: -10px;
+	margin-bottom: -10px;
+}
+
+.pane-main {
+	margin-top: 20px;
+}
+
+
+
+
+/* 管理界面 */
+table {
+	text-align: center;
+}
+
+table th {
+	text-align: center;
+}
+
+/* body {
+	margin-top: 70px;
+} */
+
+
+/* me */
+/* body {
+	margin-top: 70px;
+	font-family: "楷体";
+}
+ */
+table[class="userinfo"] tr {
+	height: 25px;
+}
+
+.border {
+	border: 1px solid #E0E0E0;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.m_content {
+	font-size: 13px;
+	font-family: "方正宋刻本秀楷简体";
+}
+
+.time {
+	font-size: 5px;
+	color: #0082CB;
+	margin-left: 2px;
+	/*float: right;*/
+}
+
+.scrollbar {
+	height: 300px;
+	overflow-y: scroll;
+}
+
+.reply_list {
+	margin-top: -15px;
+	margin-bottom: 5px;
+}
+
+.reply_content {
+	font-size: 12px;
+	font-family: "方正宋刻本秀楷简体";
+}
+
+.reply_img {
+	width: 35px;
+	height: 35px;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-top: 5px;
+	float: left;
+}
+
+.message-list {
+	margin-bottom: -20px;
+}
+
+hr {
+	margin-top: 10px;
+}
+
+/* #delbtn {
+	visibility: hidden;
+} */
