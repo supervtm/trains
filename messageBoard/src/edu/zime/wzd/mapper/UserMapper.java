@@ -32,7 +32,7 @@ public interface UserMapper {
 	public List<User> queryAll(Page page) throws Exception;
 	
 	//查询用户总数
-	@Select("select count(*) from t_user")
+	@Select("select count(*) from t_user where userId>1")
 	public Integer queryTotal() throws Exception;
 
 	@Insert("insert into t_user(userName,nickName password) values(#{userName}, #{nickName} #{password})")
