@@ -42,8 +42,8 @@
 								"&nbsp;<span>"+
 									"<font size='1' color='#0066CC'>"+(item.floor)+"楼</font>"+
 								"</span>"+
-								"<a data-toggle='collapse' data-parent='#accordion' href='#collapse"+i+"'>"+
-									"<button type='button' class='btn btn-xs btn-link' data-toggle='tooltip' title='点击显示回复'>查看回复</button>"+
+								"<a id='select_message"+i+"' data-toggle='collapse' data-parent='#accordion' href='#collapse"+i+"'>"+
+									"<button id='select_message_btn"+i+"' type='button' class='btn btn-xs btn-link' data-toggle='tooltip' title='点击显示回复'>查看回复</button>"+
 								"</a>"+
 							"</div>"+
 						"</div>"+
@@ -140,6 +140,14 @@
 			data : "&messageId=" + messageId,
 			success : function(data) {
 				/* alert(data); */
+				
+				if (data == "{\"lists\":[]}") {
+					$("#select_message"+i).prop("href", "javascript:void(0)");
+					$("#select_message"+i).css("cursor", "default");
+					$("#select_message_btn"+i).addClass("disabled");
+					$("#select_message_btn"+i).css("color", "gray");
+				}
+				
 				data = eval("(" + data + ")");
 				list = data.lists;
 				sc = "#reply_id" + i;
@@ -266,8 +274,6 @@
 		<div class="panel-body accordion-group" id="accordion">
 
 		</div>
-
-
 
 
 		<div class="panel-footer" style="height: 20px;">

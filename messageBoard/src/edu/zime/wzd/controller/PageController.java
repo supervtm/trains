@@ -40,8 +40,10 @@ public class PageController {
 	 * @return
 	 */
 	@RequestMapping("/tologin")
-	public String tologin() {
-
+	public String tologin(HttpSession session) {
+		if (session.getAttribute("user") != null) {
+			return "redirect:/page/main";
+		}
 		return "user/login";
 	}
 

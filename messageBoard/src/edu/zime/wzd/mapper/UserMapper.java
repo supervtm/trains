@@ -35,7 +35,7 @@ public interface UserMapper {
 	@Select("select count(*) from t_user where userId>1")
 	public Integer queryTotal() throws Exception;
 
-	@Insert("insert into t_user(userName,nickName password) values(#{userName}, #{nickName} #{password})")
+	@Insert("insert into t_user(userName,nickName, password) values(#{userName}, #{nickName}, #{password})")
 	public void insert(User user) throws Exception;
 
 	@Update("update t_user set nickname=#{nickName}, head=#{head} where userId=#{userId}")
